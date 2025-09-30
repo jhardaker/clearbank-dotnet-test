@@ -6,9 +6,8 @@ namespace ClearBank.DeveloperTest.Services
 {
     public class PaymentService : IPaymentService
     {
-        public MakePaymentResult MakePayment(MakePaymentRequest request)
+        public MakePaymentResult MakePayment(MakePaymentRequest request, string dataStoreType)
         {
-            var dataStoreType = ConfigurationManager.AppSettings["DataStoreType"];
 
             Account account = null;
 
