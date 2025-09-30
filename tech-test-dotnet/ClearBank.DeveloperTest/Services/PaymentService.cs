@@ -6,12 +6,12 @@ namespace ClearBank.DeveloperTest.Services
 {
     public class PaymentService : IPaymentService
     {
-        public MakePaymentResult MakePayment(MakePaymentRequest request, string dataStoreType)
+        public  MakePaymentResult MakePayment(MakePaymentRequest request)
         {
 
-            Account account = null;
+            Account account = new Account();
 
-            if (dataStoreType == "Backup")
+            if (request.DataStoreType == "Backup")
             {
                 var accountDataStore = new BackupAccountDataStore();
                 account = accountDataStore.GetAccount(request.DebtorAccountNumber);
@@ -74,7 +74,7 @@ namespace ClearBank.DeveloperTest.Services
             {
                 account.Balance -= request.Amount;
 
-                if (dataStoreType == "Backup")
+                if (request.DataStoreType == "Backup")
                 {
                     var accountDataStore = new BackupAccountDataStore();
                     accountDataStore.UpdateAccount(account);
