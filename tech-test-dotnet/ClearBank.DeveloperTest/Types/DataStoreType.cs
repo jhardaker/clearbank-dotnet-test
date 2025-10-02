@@ -3,6 +3,6 @@ namespace ClearBank.DeveloperTest.Types
 {
     public class DataStore
     {
-        public string DataStoreType { get; set; }
+        public bool DataStoreTypeIsBackUp { get; set; }
     }
 }

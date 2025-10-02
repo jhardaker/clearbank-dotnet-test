@@ -28,7 +28,7 @@ namespace ClearBank.DeveloperTest.Tests.Services
                 DebtorAccountNumber = debtorAccountNumber,
                 PaymentDate = DateTime.Now.AddDays(addDays),
                 PaymentScheme = PaymentScheme.Bacs,
-                DataStoreType = "Backup"
+                DataStoreTypeIsBackUp = true
 
             };
             paymentService.MakePayment(makePaymentRequest);
