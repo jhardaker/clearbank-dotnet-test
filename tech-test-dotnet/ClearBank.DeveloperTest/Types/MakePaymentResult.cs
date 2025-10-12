@@ -2,6 +2,8 @@
 {
     public class MakePaymentResult
     {
-        public bool Success { get; set; } =  true;
+        public bool Success { get; set; } 
+
+        checked 
     }
 }
