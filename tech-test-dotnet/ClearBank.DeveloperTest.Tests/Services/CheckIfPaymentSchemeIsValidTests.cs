@@ -32,14 +32,13 @@ namespace ClearBank.DeveloperTest.Tests.Services
                 DebtorAccountNumber = debitorAccountNumber,
                 PaymentDate = DateTime.Now.AddDays(1),
                 PaymentScheme = paymentScheme,
-                DataStoreTypeIsBackUp = true
             };
             var result = paymentService.MakePayment(makePaymentRequest);
             Assert.True(result.Success);
         }
 
         [Test]
-        [TestCase(PaymentScheme.Chaps, AccountStatus.Live)]
+        [TestCase(PaymentScheme.Chaps, AccountStatus.InboundPaymentsOnly)]
         public void ChapsServiceShouldReturnUnsuccessfulIfChapsIsDisallowedPayment(PaymentScheme paymentScheme, AccountStatus accountStatus)
         {
 
@@ -56,7 +55,6 @@ namespace ClearBank.DeveloperTest.Tests.Services
                 DebtorAccountNumber = debitorAccountNumber,
                 PaymentDate = DateTime.Now.AddDays(1),
                 PaymentScheme = paymentScheme,
-                DataStoreTypeIsBackUp = true
             };
             var result = paymentService.MakePayment(makePaymentRequest);
             Assert.False(result.Success);
@@ -81,7 +79,6 @@ namespace ClearBank.DeveloperTest.Tests.Services
                 DebtorAccountNumber = debitorAccountNumber,
                 PaymentDate = DateTime.Now.AddDays(1),
                 PaymentScheme = paymentScheme,
-                DataStoreTypeIsBackUp = true
             };
             var result = paymentService.MakePayment(makePaymentRequest);
             Assert.False(result.Success);
@@ -107,7 +104,6 @@ namespace ClearBank.DeveloperTest.Tests.Services
                 DebtorAccountNumber = debitorAccountNumber,
                 PaymentDate = DateTime.Now.AddDays(1),
                 PaymentScheme = paymentScheme,
-                DataStoreTypeIsBackUp = true
             };
             var result = paymentService.MakePayment(makePaymentRequest);
             Assert.True(result.Success);
@@ -120,7 +116,7 @@ namespace ClearBank.DeveloperTest.Tests.Services
             string debitorAccountNumber = "485948394";
 
             var mock = new Mock<IAccountRepoitory>();
-            mock.Setup(r => r.GetAccount(debitorAccountNumber)).Returns(new Account() { AllowedPaymentSchemes = AllowedPaymentSchemes.Bacs , Balance = 100});
+            mock.Setup(r => r.GetAccount(debitorAccountNumber)).Returns(new Account() { AllowedPaymentSchemes = AllowedPaymentSchemes.Bacs , Balance = 40});
 
             IPaymentService paymentService = new PaymentService(mock.Object);
 
@@ -131,7 +127,6 @@ namespace ClearBank.DeveloperTest.Tests.Services
                 DebtorAccountNumber = debitorAccountNumber,
                 PaymentDate = DateTime.Now.AddDays(1),
                 PaymentScheme = paymentScheme,
-                DataStoreTypeIsBackUp = true
             };
             var result = paymentService.MakePayment(makePaymentRequest);
             Assert.False(result.Success);
@@ -147,7 +142,7 @@ namespace ClearBank.DeveloperTest.Tests.Services
             string debitorAccountNumber = "485948394";
 
             var mock = new Mock<IAccountRepoitory>();
-            mock.Setup(r => r.GetAccount(debitorAccountNumber)).Returns(new Account() { AllowedPaymentSchemes = AllowedPaymentSchemes.FasterPayments, Balance = balance });
+            mock.Setup(r => r.GetAccount(debitorAccountNumber)).Returns(new Account() { AllowedPaymentSchemes = AllowedPaymentSchemes.Bacs, Balance = balance });
 
             IPaymentService paymentService = new PaymentService(mock.Object);
 
@@ -158,7 +153,6 @@ namespace ClearBank.DeveloperTest.Tests.Services
                 DebtorAccountNumber = debitorAccountNumber,
                 PaymentDate = DateTime.Now.AddDays(1),
                 PaymentScheme = paymentScheme,
-                DataStoreTypeIsBackUp = true
             };
             var result = paymentService.MakePayment(makePaymentRequest);
             Assert.False(result.Success);
@@ -182,7 +176,6 @@ namespace ClearBank.DeveloperTest.Tests.Services
                 DebtorAccountNumber = debitorAccountNumber,
                 PaymentDate = DateTime.Now.AddDays(1),
                 PaymentScheme = paymentScheme,
-                DataStoreTypeIsBackUp = true
             };
             var result = paymentService.MakePayment(makePaymentRequest);
             Assert.True(result.Success);
@@ -206,7 +199,6 @@ namespace ClearBank.DeveloperTest.Tests.Services
                 DebtorAccountNumber = debitorAccountNumber,
                 PaymentDate = DateTime.Now.AddDays(1),
                 PaymentScheme = paymentScheme,
-                DataStoreTypeIsBackUp = true
             };
             var result = paymentService.MakePayment(makePaymentRequest);
             Assert.False(result.Success);

@@ -42,11 +42,10 @@ namespace ClearBank.DeveloperTest.Services
             bool isSuccess = scheme switch
             {
                 PaymentScheme.Bacs =>  account.AllowedPaymentSchemes.HasFlag(AllowedPaymentSchemes.Bacs) ? true : false,
-                PaymentScheme.FasterPayments => account.AllowedPaymentSchemes.HasFlag(AllowedPaymentSchemes.FasterPayments) ? true : false && account.Balance < ammout ? false : true,
-                PaymentScheme.Chaps => account.AllowedPaymentSchemes.HasFlag(AllowedPaymentSchemes.Chaps) ? true : false &&  account.Status == AccountStatus.Live ? true : false,
+                PaymentScheme.FasterPayments => account.AllowedPaymentSchemes.HasFlag(AllowedPaymentSchemes.FasterPayments) ? true : false || account.Balance > ammout ? true : false,
+                PaymentScheme.Chaps => account.AllowedPaymentSchemes.HasFlag(AllowedPaymentSchemes.Chaps) ? true : false ||  account.Status == AccountStatus.Live ? true : false,
                 _ => true,
             };
-
 
             return isSuccess;
         }

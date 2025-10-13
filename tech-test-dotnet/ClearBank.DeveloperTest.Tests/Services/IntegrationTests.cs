@@ -30,7 +30,6 @@ namespace ClearBank.DeveloperTest.Tests.Services
                 DebtorAccountNumber = "test",
                 PaymentDate = DateTime.Now.AddDays(1),
                 PaymentScheme = PaymentScheme.Bacs,
-                DataStoreTypeIsBackUp = true
             };
             var result = paymentService.MakePayment(makePaymentRequest);
 
@@ -53,7 +52,6 @@ namespace ClearBank.DeveloperTest.Tests.Services
                 DebtorAccountNumber = "test",
                 PaymentDate = DateTime.Now.AddDays(1),
                 PaymentScheme = PaymentScheme.Bacs,
-                DataStoreTypeIsBackUp = true
             };
             var result = paymentService.MakePayment(makePaymentRequest);
 
