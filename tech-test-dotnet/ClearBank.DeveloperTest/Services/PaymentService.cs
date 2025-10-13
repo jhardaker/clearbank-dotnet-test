@@ -25,6 +25,7 @@ namespace ClearBank.DeveloperTest.Services
             if (account == null)
             {
                 makePaymentResult.Success = false;
+                return makePaymentResult;
             }
 
             makePaymentResult.Success = CheckIfPaymentIsValid(request.PaymentScheme, account, request.Amount);
