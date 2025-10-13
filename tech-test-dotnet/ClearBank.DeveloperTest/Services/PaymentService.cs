@@ -20,11 +20,6 @@ namespace ClearBank.DeveloperTest.Services
         {
             var makePaymentResult = new MakePaymentResult();
 
-            //impossible to test back up data store using this approach this approach
-            if (request.DataStoreTypeIsBackUp) {
-                _accountRepoitory =  new AccountBackupDataStore();
-            }
-
             var account = _accountRepoitory.GetAccount(request.DebtorAccountNumber);
             
             if (account == null)
