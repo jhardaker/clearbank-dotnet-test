@@ -2,7 +2,7 @@
 
 namespace ClearBank.DeveloperTest.Types
 {
-    public class MakePaymentRequest
+    public class MakePaymentRequest 
     {
         public string CreditorAccountNumber { get; set; }
 
